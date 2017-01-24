@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+  <!-- Basic -->
+  <title>Margo | Home</title>
+
+  <!-- Define Charset -->
+  <meta charset="utf-8">
+
+  <!-- Responsive Metatag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Page Description and Author -->
+  <meta name="description" content="Margo - Responsive HTML5 Template">
+  <meta name="author" content="iThemesLab">
+
+  <!-- Bootstrap CSS  -->
+  <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen">
+
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen">
+
+  <!-- Slicknav -->
+  <link rel="stylesheet" type="text/css" href="css/slicknav.css" media="screen">
+
+  <!-- Margo CSS Styles  -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+
+  <!-- Responsive CSS Styles  -->
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
+
+  <!-- Css3 Transitions Styles  -->
+  <link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
+
+  <!-- Color CSS Styles  -->
+  <link rel="stylesheet" type="text/css" href="css/colors/red.css" title="red" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/jade.css" title="jade" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/green.css" title="green" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/blue.css" title="blue" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/beige.css" title="beige" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/cyan.css" title="cyan" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/orange.css" title="orange" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/peach.css" title="peach" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/pink.css" title="pink" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/purple.css" title="purple" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css" title="sky-blue" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen" />
+
+  <!-- Margo JS  -->
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <!--<script type="text/javascript" src="js/jquery.migrate.js"></script>-->
+  <!--<script type="text/javascript" src="js/modernizrr.js"></script>-->
+  <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
+  <!--<script type="text/javascript" src="js/jquery.fitvids.js"></script>-->
+  <!--<script type="text/javascript" src="js/owl.carousel.min.js"></script>-->
+  <!--<script type="text/javascript" src="js/nivo-lightbox.min.js"></script>-->
+  <!--<script type="text/javascript" src="js/jquery.isotope.min.js"></script>-->
+  <!--<script type="text/javascript" src="js/jquery.appear.js"></script>-->
+  <!--<script type="text/javascript" src="js/count-to.js"></script>-->
+  <script type="text/javascript" src="js/jquery.textillate.js"></script>
+  <script type="text/javascript" src="js/jquery.lettering.js"></script>
+  <!--<script type="text/javascript" src="js/jquery.easypiechart.min.js"></script>-->
+  <!--<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>-->
+  <!--<script type="text/javascript" src="js/jquery.parallax.js"></script>-->
+  <!--<script type="text/javascript" src="js/mediaelement-and-player.js"></script>-->
+  <!--<script type="text/javascript" src="js/jquery.slicknav.js"></script>-->
+
+
+  <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <style>
+   .char6{
+     font-size: 50px;
+     color: blue;
+   }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="fancy_title tlt">Some Title</h1>
+
+</div>
+<!--<script type="text/javascript" src="js/script.js"></script>-->
+<script>
+  $('.tlt').textillate({
+    // the default selector to use when detecting multiple texts to animate
+    selector: '.texts',
+
+    // enable looping
+    loop: false,
+
+    // sets the minimum display time for each text before it is replaced
+    minDisplayTime: 6000,
+
+    // sets the initial delay before starting the animation
+    // (note that depending on the in effect you may need to manually apply
+    // visibility: hidden to the element before running this plugin)
+    initialDelay: 0,
+
+    // set whether or not to automatically start animating
+    autoStart: true,
+
+    // custom set of 'in' effects. This effects whether or not the
+    // character is shown/hidden before or after an animation
+    inEffects: [],
+
+    // custom set of 'out' effects
+    outEffects: [ 'hinge' ],
+
+    // in animation settings
+    in: {
+      // set the effect name
+      effect: 'fadeInLeftBig',
+
+      // set the delay factor applied to each consecutive character
+      delayScale: 1.5,
+
+      // set the delay between each character
+      delay: 500,
+
+      // set to true to animate all the characters at the same time
+      sync: false,
+
+      // randomize the character sequence
+      // (note that shuffle doesn't make sense with sync = true)
+      shuffle: false,
+
+      // reverse the character sequence
+      // (note that reverse doesn't make sense with sync = true)
+      reverse: false,
+
+      // callback that executes once the animation has finished
+      callback: function () {}
+    },
+
+    // out animation settings.
+    out: {
+      effect: 'hinge',
+      delayScale: 1.5,
+      delay: 50,
+      sync: false,
+      shuffle: false,
+      reverse: false,
+      callback: function () {}
+    },
+
+    // callback that executes once textillate has finished
+    callback: function () {},
+
+    // set the type of token to animate (available types: 'char' and 'word')
+    type: 'char'
+  });
+</script>
+
+</body>
+</html>

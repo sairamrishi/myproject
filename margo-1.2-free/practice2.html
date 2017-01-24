@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/jquery.textillate.js"></script>
+  <script type="text/javascript" src="js/jquery.lettering.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countto/1.2.0/jquery.countTo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/4.3.0/typeit.js"></script>
+  <style>
+    /*These styles contain basic styles for fomatting along with our animation css*/
+
+    body {
+      font-size: 16px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      background: #efefef;
+      line-height: 170%;
+    }
+
+    strong,
+    b {
+      font-weight: 600
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 300;
+      line-height: 150%;
+    }
+
+    i.fa {
+      color: #333;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+    /*clearfixes*/
+
+    .cf:before,
+    .cf:after {
+      content: " ";
+      display: table;
+    }
+
+    .cf:after {
+      clear: both;
+    }
+
+    .main-container {
+      background: #fff;
+      max-width: 1000px;
+      margin: 25px auto 25px auto;
+      position: relative;
+    }
+
+    .container {
+      position: relative;
+      padding: 25px;
+    }
+    /*animation element*/
+
+    .animation-element {
+      opacity: 0;
+      position: relative;
+    }
+    /*animation element sliding left*/
+
+    .animation-element.slide-left {
+      opacity: 0;
+      -moz-transition: all 500ms linear;
+      -webkit-transition: all 500ms linear;
+      -o-transition: all 500ms linear;
+      transition: all 500ms linear;
+      -moz-transform: translate3d(-100px, 0px, 0px);
+      -webkit-transform: translate3d(-100px, 0px, 0px);
+      -o-transform: translate(-100px, 0px);
+      -ms-transform: translate(-100px, 0px);
+      transform: translate3d(-100px, 0px, 0px);
+    }
+
+    .animation-element.slide-left.in-view {
+      opacity: 1;
+      -moz-transform: translate3d(0px, 0px, 0px);
+      -webkit-transform: translate3d(0px, 0px, 0px);
+      -o-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+      transform: translate3d(0px, 0px, 0px);
+    }
+    /*animation slide left styled for testimonials*/
+
+    .animation-element.slide-left.testimonial {
+      float: left;
+      width: 47%;
+      margin: 0% 1.5% 3% 1.5%;
+      background: #F5F5F5;
+      padding: 15px;
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+      border: solid 1px #EAEAEA;
+    }
+    .animation-element.slide-left.testimonial:hover,
+    .animation-element.slide-left.testimonial:active{
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .animation-element.slide-left.testimonial:nth-of-type(odd) {
+      width: 48.5%;
+      margin: 0% 1.5% 3.0% 0%;
+    }
+
+    .animation-element.slide-left.testimonial:nth-of-type(even) {
+      width: 48.5%;
+      margin: 0% 0% 3.0% 1.5%;
+    }
+
+    .animation-element.slide-left.testimonial .header{
+      float: left;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .animation-element.slide-left.testimonial .left{
+      float: left;
+      margin-right: 15px;
+    }
+    .animation-element.slide-left.testimonial .right{
+      float: left;
+    }
+
+    .animation-element.slide-left.testimonial img {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      box-shadow: 0px 1px 3px rgba(51, 51, 51, 0.5);
+    }
+
+    .animation-element.slide-left.testimonial h3 {
+      margin: 0px 0px 5px 0px;
+    }
+
+    .animation-element.slide-left.testimonial h4 {
+      margin: 0px 0px 5px 0px;
+    }
+
+    .animation-element.slide-left.testimonial .content {
+      float: left;
+      width:100%;
+      margin-bottom: 10px;
+    }
+
+    .animation-element.slide-left.testimonial .rating{}
+
+    .animation-element.slide-left.testimonial i {
+      color: #aaa;
+      margin-right: 5px;
+    }
+
+
+
+    /*media queries for small devices*/
+    @media screen and (max-width: 678px){
+      /*testimonials*/
+      .animation-element.slide-left.testimonial,
+      .animation-element.slide-left.testimonial:nth-of-type(odd),
+      .animation-element.slide-left.testimonial:nth-of-type(even){
+        width: 100%;
+        margin: 0px 0px 20px 0px;
+      }
+      .animation-element.slide-left.testimonial .right,
+      .animation-element.slide-left.testimonial .left,
+      .animation-element.slide-left.testimonial .content,
+      .animation-element.slide-left.testimonial .rating{
+        text-align: center;
+        float: none;
+      }
+      .animation-element.slide-left.testimonial img{
+        width: 85px;
+        height: 85px;
+        margin-bottom: 5px;
+      }
+
+    }
+  </style>
+  <!--<style>
+    body{
+      font-family: 'Roboto', sans-serif;
+    }
+    .section1{
+      background: url("http://www.solidbackgrounds.com/images/2880x1800/2880x1800-light-yellow-solid-color-background.jpg");
+      height: 250px;
+      width: 100%;
+      text-align: center;
+      padding-top:13vh;
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .section2 {
+      background: url("https://www.just-wp-it.com/wp-content/uploads/2016/03/solid-color-light-blue-background.jpg");
+      padding-top: 13vh;
+      text-align: center;
+      font-size: 24px;
+      height: 250px;
+    }
+    .section3{
+      background: url("https://lh5.ggpht.com/ZFZY6_t7ccTA8qq-G87w2dYQ3PM8i5eR90m5ryjpR3A73SLXxWVyNSe62b-rZePjxtl4=h900");
+    }
+
+    /*zoom-in*/
+    /*GROW*/
+    .grow img {
+      height: 300px;
+      width: 300px;
+      position: relative;
+
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+
+    .grow img:hover {
+      width: 400px;
+      height: 400px;
+    }
+    .grow img:hover:before {
+      content: "";
+      position: absolute;
+      background: rgba(0,255,255, 0.5);
+      -moz-transition: all .3s linear;
+      -webkit-transition: all .3s linear;
+      -ms-transition: all .3s linear;
+      -o-transition: all .3s linear;
+      transition: all .3s linear;
+    }
+    .pic {
+      border: 10px solid #fff;
+      float: left;
+      height: 300px;
+      width: 300px;
+      margin: 20px;
+      overflow: hidden;
+
+      -webkit-box-shadow: 0px 0px 1px #111;
+      box-shadow: 0px 0px 1px #111;
+    }
+
+
+
+  </style>-->
+  <title></title>
+</head>
+<body>
+<!--For our animations to look good, the animated elements need to be able to be scrolled to. For this example I've added dummy content to the top -->
+<div class="main-container">
+  <div class="container">
+    <h1>Slide in from the left </h1>
+    <p>This animation will focus on sliding an element from the left once it enters the view of the user</p>
+  </div>
+  <div class="container">
+    <h2>
+      Our Testimonials <i class="fa fa-comment"></i></h2>
+    <p> We have worked in the industry for 15 years and have provided services to a wide range of clients.</p>
+    <p>Come and see what our clients are saying about our services. </p>
+  </div>
+  <div class="container cf">
+    <!-- testimonial one -->
+    <div class="animation-element slide-left testimonial">
+      <div class="header">
+        <div class="left">
+          <img src="http://drive.google.com/uc?export=download&id=0B7UPM0QugWUjVTdZcktRTWhNamM" />
+        </div>
+        <div class="right">
+          <h3>Johnathon Richard Smith</h3>
+          <h4>CEO / Manager - Auto Incorporated</h4>
+        </div>
+      </div>
+      <div class="content"><i class="fa fa-quote-left"></i> When I started using their service I was skeptical. They promised me a 300% return on my initial investment. However they came through on their word and now my business is flourishing.. <i class="fa fa-quote-right"></i>
+      </div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-o"></i>
+      </div>
+    </div>
+    <!--testimonial two -->
+    <div class="animation-element slide-left testimonial">
+      <div class="header">
+        <div class="left">
+          <img src="http://drive.google.com/uc?export=download&id=0B7UPM0QugWUjV3BseTMtcEU1T2M" />
+        </div>
+        <div class="right">
+          <h3>Joanna Hammerlton</h3>
+          <h4>Marketing Manager - Omega Creative</h4>
+        </div>
+      </div>
+      <div class="content"><i class="fa fa-quote-left"></i> Our company first enlisted their services when we had a down-turn in sales and revene. They outlined a series of steps we could take to improve our position and within a year we are making signifcant improvements..
+        <i class="fa fa-quote-right"></i>
+      </div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+    </div>
+    <!--testimonial three -->
+    <div class="animation-element slide-left testimonial">
+      <div class="header">
+        <div class="left">
+          <img src="http://drive.google.com/uc?export=download&id=0B7UPM0QugWUjTURta0pyMEtoUmc
+" />
+        </div>
+        <div class="right">
+          <h3>Mark Jamerson</h3>
+          <h4>CEO - Generic Business</h4>
+        </div>
+      </div>
+      <div class="content"><i class="fa fa-quote-left"></i> We entered into a 12 month period of service with this company in the hopes to improve our returns. After this period we have a return of double our initial investment..
+        <i class="fa fa-quote-right"></i>
+      </div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+      </div>
+    </div>
+    <!--testimonial four -->
+    <div class="animation-element slide-left testimonial">
+      <div class="header">
+        <div class="left">
+          <img src="http://drive.google.com/uc?export=download&id=0B7UPM0QugWUjb1dxcGZEYUc0Z3M" />
+        </div>
+        <div class="right">
+          <h3>Susan Hilton</h3>
+          <h4>Financial Officer - People Tech</h4>
+        </div>
+      </div>
+      <div class="content"><i class="fa fa-quote-left"></i> Our involvement in this company has been mutually beneficial. We were hoping for slightly higher returns, however the current level of returns are sufficient..
+        <i class="fa fa-quote-right"></i>
+      </div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="container">
+  <div class="type-it section1"></div>
+  <div class="row">
+    <div class="col-md-4 section2">
+      <div class="timer" data-from="0" data-to="54"
+           data-speed="5000" data-refresh-interval="50"></div>
+    </div>
+    <div class="col-md-4 section2">
+      <div class="timer" data-from="150" data-to="5563"
+           data-speed="5000" data-refresh-interval="50"></div>
+    </div>
+    <div class="col-md-4 section2">
+      <div class="timer" data-from="63" data-to="2744"
+           data-speed="5000" data-refresh-interval="50"></div>
+    </div>
+  </div>
+  <h1 class="tlt">Some Title</h1>
+  <div class="grow pic">
+    <img src="images/member-02.jpg" alt="portrait">
+  </div>
+</div>-->
+<!--<script>
+  var $animation_elements = $('.animation-element');
+  var $window = $(window);
+
+  function check_if_in_view() {
+    var window_height = $window.height();
+    var window_top_position = $window.scrollTop();
+    var window_bottom_position = (window_top_position + window_height);
+
+    $.each($animation_elements, function() {
+      var $element = $(this);
+      var element_height = $element.outerHeight();
+      var element_top_position = $element.offset().top;
+      var element_bottom_position = (element_top_position + element_height);
+
+      //check to see if this current container is within viewport
+      if ((element_bottom_position >= window_top_position) &&
+          (element_top_position <= window_bottom_position)) {
+        $element.addClass('in-view');
+      } else {
+        $element.removeClass('in-view');
+      }
+    });
+  }
+
+  $window.on('scroll resize', check_if_in_view);
+  $window.trigger('scroll');
+</script>-->
+<script>
+  $('.type-it').typeIt({
+    speed: 200,
+    lifeLike: false,
+    autoStart: false
+  })
+      .tiType("It's my animated Header");
+  $('.timer').countTo();
+</script>
+<script>
+  $('.tlt').textillate({
+    // the default selector to use when detecting multiple texts to animate
+    selector: '.texts',
+
+    // enable looping
+    loop: false,
+
+    // sets the minimum display time for each text before it is replaced
+    minDisplayTime: 2000,
+
+    // sets the initial delay before starting the animation
+    // (note that depending on the in effect you may need to manually apply
+    // visibility: hidden to the element before running this plugin)
+    initialDelay: 0,
+
+    // set whether or not to automatically start animating
+    autoStart: true,
+
+    // custom set of 'in' effects. This effects whether or not the
+    // character is shown/hidden before or after an animation
+    inEffects: [],
+
+    // custom set of 'out' effects
+    outEffects: [ 'hinge' ],
+
+    // in animation settings
+    in: {
+      // set the effect name
+      effect: 'fadeInLeftBig',
+
+      // set the delay factor applied to each consecutive character
+      delayScale: 1.5,
+
+      // set the delay between each character
+      delay: 100,
+
+      // set to true to animate all the characters at the same time
+      sync: false,
+
+      // randomize the character sequence
+      // (note that shuffle doesn't make sense with sync = true)
+      shuffle: false,
+
+      // reverse the character sequence
+      // (note that reverse doesn't make sense with sync = true)
+      reverse: false,
+
+      // callback that executes once the animation has finished
+      callback: function () {}
+    },
+
+    // out animation settings.
+    out: {
+      effect: 'hinge',
+      delayScale: 1.5,
+      delay: 50,
+      sync: false,
+      shuffle: false,
+      reverse: false,
+      callback: function () {}
+    },
+
+    // callback that executes once textillate has finished
+    callback: function () {},
+
+    // set the type of token to animate (available types: 'char' and 'word')
+    type: 'char'
+  });
+
+</script>
+
+</body>
+</html>

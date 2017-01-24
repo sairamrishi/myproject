@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/colors/blue.css"/>
+  <link rel="stylesheet" href="css/colors/green.css"/>
+  <link rel="stylesheet" href="css/colors/orange.css"/>
+  <!--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.min.js"></script>-->
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+  <title></title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body { font-family: sans-serif; }
+
+    .grid {
+      background: #DDD;
+      max-width: 1200px;
+    }
+
+    .grid-item {
+      float: left;
+    }
+
+    /* item is invisible, but used for layout */
+    .grid-item,
+    .grid-item-content {
+      width: 80px;
+      height: 80px;
+    }
+
+    /* item-content is visible, and transitions size */
+    .grid-item-content {
+      width: 80px;
+      height: 80px;
+      background: lightgray;
+      border: 2px solid #333;
+      border-color: hsla(0, 0%, 0%, 0.7);
+      -webkit-transition: width 0.4s, height 0.4s;
+      -moz-transition: width 0.4s, height 0.4s;
+      -o-transition: width 0.4s, height 0.4s;
+      transition: width 0.4s, height 0.4s;
+    }
+
+    .grid-item:hover .grid-item-content {
+      background: #8CF;
+      cursor: pointer;
+    }
+
+    /* both item and item content change size */
+    .grid-item.is-expanded,
+    .grid-item.is-expanded .grid-item-content {
+      width: 240px;
+      height: 160px;
+    }
+
+    .grid-item.is-expanded {
+      z-index: 2;
+    }
+
+    .grid-item.is-expanded .grid-item-content {
+      background: darkgray;
+    }
+  </style>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    /* ---- button ---- */
+
+    .button {
+      display: inline-block;
+      padding: 0.5em 1.0em;
+      margin-bottom: 10px;
+      background: #EEE;
+      border: none;
+      border-radius: 7px;
+      background-image: linear-gradient( to bottom, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.2) );
+      color: #222;
+      font-family: sans-serif;
+      font-size: 16px;
+      text-shadow: 0 1px white;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #8CF;
+      text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
+      color: #222;
+    }
+
+    .button:active,
+    .button.is-checked {
+      background-color: #28F;
+    }
+
+    .button.is-checked {
+      color: white;
+      text-shadow: 0 -1px hsla(0, 0%, 0%, 0.8);
+    }
+
+    .button:active {
+      box-shadow: inset 0 1px 10px hsla(0, 0%, 0%, 0.8);
+    }
+
+    /* ---- button-group ---- */
+
+    .button-group:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .button-group .button {
+      float: left;
+      border-radius: 0;
+      margin-left: 0;
+      margin-right: 1px;
+    }
+
+    .button-group .button:first-child { border-radius: 0.5em 0 0 0.5em; }
+    .button-group .button:last-child { border-radius: 0 0.5em 0.5em 0; }
+
+    /* ---- grid ---- */
+
+    .grid {
+      border: 1px solid #333;
+    }
+
+    /* clear fix */
+    .grid:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    /* ---- .element-item ---- */
+
+    .element-item {
+      position: relative;
+      float: left;
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      padding: 10px;
+      background: #888;
+      color: #262524;
+    }
+
+    .element-item > * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .element-item .name {
+      position: absolute;
+
+      left: 10px;
+      top: 60px;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    .element-item .symbol {
+      position: absolute;
+      left: 10px;
+      top: 0px;
+      font-size: 42px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .element-item .number {
+      position: absolute;
+      right: 8px;
+      top: 5px;
+    }
+
+    .element-item .weight {
+      position: absolute;
+      left: 10px;
+      top: 76px;
+      font-size: 12px;
+    }
+
+
+
+
+    .notification {
+      position: fixed;
+      background: black;
+      opacity: 0;
+      color: white;
+      font-size: 16px;
+      padding: 0.5em;
+      right: 0;
+      top: 0;
+    }
+
+
+  </style>
+
+</head>
+<body>
+
+<!--hiding on click-->
+<h1>Isotope - animate item size with jQuery</h1>
+
+<div class="grid">
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+</div>
+<!--hiding on click-->
+
+
+
+
+<h1>Isotope - arrangeComplete</h1>
+
+<p>Open Console to view event logs.</p>
+
+<h2>Filter</h2>
+
+<div id="filters" class="button-group filter-button-group">
+  <button class="button is-checked" data-filter="*">show all</button>
+  <button class="button" data-filter=".metal">metal</button>
+  <button class="button" data-filter=".transition">transition</button>
+  <button class="button" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
+  <button class="button" data-filter=":not(.transition)">not transition</button>
+  <button class="button" data-filter=".metal:not(.transition)">metal but not transition</button>
+</div>
+
+<h2>Sort</h2>
+
+<div class="button-group sort-by-button-group">  <button class="button is-checked" data-sort-by="original-order">original order</button>
+  <button class="button" data-sort-by="name">name</button>
+  <button class="button" data-sort-by="symbol">symbol</button>
+  <button class="button" data-sort-by="number">number</button>
+  <button class="button" data-sort-by="weight">weight</button>
+  <button class="button" data-sort-by="category">category</button>
+</div>
+
+<!--<div class="grid">
+  <div class="element-item transition metal " data-category="transition">
+    <h3 class="name">Mercury</h3>
+    <p class="symbol">Hg</p>
+    <p class="number">80</p>
+    <p class="weight">200.59</p>
+  </div>
+  <div class="element-item metalloid " data-category="metalloid">
+    <h3 class="name">Tellurium</h3>
+    <p class="symbol">Te</p>
+    <p class="number">52</p>
+    <p class="weight">127.6</p>
+  </div>
+  <div class="element-item post-transition metal " data-category="post-transition">
+    <h3 class="name">Bismuth</h3>
+    <p class="symbol">Bi</p>
+    <p class="number">83</p>
+    <p class="weight">208.980</p>
+  </div>
+  <div class="element-item post-transition metal " data-category="post-transition">
+    <h3 class="name">Lead</h3>
+    <p class="symbol">Pb</p>
+    <p class="number">82</p>
+    <p class="weight">207.2</p>
+  </div>
+  <div class="element-item transition metal " data-category="transition">
+    <h3 class="name">Gold</h3>
+    <p class="symbol">Au</p>
+    <p class="number">79</p>
+    <p class="weight">196.967</p>
+  </div>
+  <div class="element-item alkali metal " data-category="alkali">
+    <h3 class="name">Potassium</h3>
+    <p class="symbol">K</p>
+    <p class="number">19</p>
+    <p class="weight">39.0983</p>
+  </div>
+  <div class="element-item alkali metal " data-category="alkali">
+    <h3 class="name">Sodium</h3>
+    <p class="symbol">Na</p>
+    <p class="number">11</p>
+    <p class="weight">22.99</p>
+  </div>
+  <div class="element-item transition metal " data-category="transition">
+    <h3 class="name">Cadmium</h3>
+    <p class="symbol">Cd</p>
+    <p class="number">48</p>
+    <p class="weight">112.411</p>
+  </div>
+  <div class="element-item alkaline-earth metal " data-category="alkaline-earth">
+    <h3 class="name">Calcium</h3>
+    <p class="symbol">Ca</p>
+    <p class="number">20</p>
+    <p class="weight">40.078</p>
+  </div>
+  <div class="element-item transition metal " data-category="transition">
+    <h3 class="name">Rhenium</h3>
+    <p class="symbol">Re</p>
+    <p class="number">75</p>
+    <p class="weight">186.207</p>
+  </div>
+  <div class="element-item post-transition metal " data-category="post-transition">
+    <h3 class="name">Thallium</h3>
+    <p class="symbol">Tl</p>
+    <p class="number">81</p>
+    <p class="weight">204.383</p>
+  </div>
+  <div class="element-item metalloid " data-category="metalloid">
+    <h3 class="name">Antimony</h3>
+    <p class="symbol">Sb</p>
+    <p class="number">51</p>
+    <p class="weight">121.76</p>
+  </div>
+  <div class="element-item transition metal " data-category="transition">
+    <h3 class="name">Cobalt</h3>
+    <p class="symbol">Co</p>
+    <p class="number">27</p>
+    <p class="weight">58.933</p>
+  </div>
+  <div class="element-item lanthanoid metal inner-transition " data-category="lanthanoid">
+    <h3 class="name">Ytterbium</h3>
+    <p class="symbol">Yb</p>
+    <p class="number">70</p>
+    <p class="weight">173.054</p>
+  </div>
+  <div class="element-item noble-gas nonmetal " data-category="noble-gas">
+    <h3 class="name">Argon</h3>
+    <p class="symbol">Ar</p>
+    <p class="number">18</p>
+    <p class="weight">39.948</p>
+  </div>
+  <div class="element-item diatomic nonmetal " data-category="diatomic">
+    <h3 class="name">Nitrogen</h3>
+    <p class="symbol">N</p>
+    <p class="number">7</p>
+    <p class="weight">14.007</p>
+  </div>
+  <div class="element-item actinoid metal inner-transition " data-category="actinoid">
+    <h3 class="name">Uranium</h3>
+    <p class="symbol">U</p>
+    <p class="number">92</p>
+    <p class="weight">238.029</p>
+  </div>
+  <div class="element-item actinoid metal inner-transition " data-category="actinoid">
+    <h3 class="name">Plutonium</h3>
+    <p class="symbol">Pu</p>
+    <p class="number">94</p>
+    <p class="weight">(244)</p>
+  </div>
+</div>-->
+<script>
+  // external js: isotope.pkgd.js
+
+  var $grid = $('.grid').isotope({
+    itemSelector: '.grid-item',
+    masonry: {
+      columnWidth: 80
+    }
+  });
+
+  $grid.on( 'click', '.grid-item-content', function() {
+    $( this ).parent('.grid-item').toggleClass('is-expanded');
+    $grid.isotope('layout');
+  });
+
+</script>
+<script>
+  var $notifElem = $('.notification');
+
+  // init Isotope
+  var $grid = $('.grid').isotope({
+    itemSelector: '.element-item',
+    layoutMode: 'fitRows',
+    getSortData: {
+      name: '.name',
+      symbol: '.symbol',
+      number: '.number parseInt',
+      category: '[data-category]',
+      weight: function( itemElem ) {
+        var weight = $( itemElem ).find('.weight').text();
+        return parseFloat( weight.replace( /[\(\)]/g, '') );
+      }
+    }
+  });
+
+  $grid.on( 'arrangeComplete', function( event, filteredItems ) {
+    console.log( 'arrangeComplete with ' + filteredItems.length + ' items' );
+  });
+
+  // bind filter button click
+  $('.filter-button-group').on( 'click', 'button', function() {
+    var filterValue = $( this ).attr('data-filter');
+    $grid.isotope({ filter: filterValue });
+  });
+
+  // bind sort button click
+  $('.sort-by-button-group').on( 'click', 'button', function() {
+    var sortByValue = $(this).attr('data-sort-by');
+    $grid.isotope({ sortBy: sortByValue });
+  });
+
+  // change is-checked class on buttons
+  $('.button-group').each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( 'click', 'button', function() {
+      $buttonGroup.find('.is-checked').removeClass('is-checked');
+      $( this ).addClass('is-checked');
+    });
+  });
+
+</script>
+
+</body>
+</html>

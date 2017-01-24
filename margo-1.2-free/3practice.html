@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/colors/blue.css"/>
+  <link rel="stylesheet" href="css/colors/green.css"/>
+  <link rel="stylesheet" href="css/colors/orange.css"/>
+  <!--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.min.js"></script>-->
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      background: #eeeeee;
+      margin: 0;
+      padding: 0;
+      font-family: "Source Sans Pro", sans-serif;
+      color: #333333;
+    }
+    header{
+      width: 100%;
+      padding: 60px 0;
+      background: white;
+      border-bottom: 1px solid #e1e1e1;
+      /* animation magic */
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      z-index: 9999;
+      top: 0;
+      position: fixed;
+    }
+    header h1 {
+      font-size: 30px;
+      text-indent: 40px;
+      font-weight: bold;
+    }
+    .container{
+      width: 40%;
+      margin: 180px auto;
+    }
+    .shrink{
+      padding: 20px 0;
+      background: rgba(250,250,250,0.5);
+    }
+    p{
+      margin: 0 0 40px 0;
+      line-height: 24px;
+    }
+    strong{
+      font-weight: bold;
+    }
+  </style>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <title></title>
+  <style>
+    button{
+      cursor: pointer;
+    }
+    .btn-style{
+      height: 40px;
+      width: 100px;
+      color: white;
+    }
+    button a {
+      color: white;
+    }
+  </style>
+  <style>
+    .sidenav {
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 23%;
+      left: 0;
+      background-color: #fff;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      border: 1px solid #333;
+      box-shadow: 0 0 9px;
+    }
+
+    .sidenav a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: inline-flex;
+      transition: 0.3s
+    }
+
+    .sidenav a:hover, .offcanvas a:focus{
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: -9px;
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+    ul li a {
+      display: inline-flex;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+    }
+    li a span{
+      width: 15px;
+      height: 15px;
+    }
+  </style>
+
+</head>
+<body>
+
+<header>
+  <h1>Lets shrink ;)</h1>
+</header>
+
+<section class="container">
+  <p><strong>Scroll down to see the magic in action...</strong></p>
+  <p>
+    Sed nulla cred Banksy jean shorts. Reprehenderit mumblecore incididunt anim accusamus. Keffiyeh Cosby sweater in cornhole elit, tote bag cillum banjo. Shabby chic YOLO banh mi sunt. Artisan blog Neutra, polaroid adipisicing Banksy +1 lo-fi umami distillery fixie seitan. Semiotics artisan flannel mollit craft beer Blue Bottle. Bespoke biodiesel banh mi literally.
+  </p>
+
+  <p>
+    YOLO Marfa drinking vinegar polaroid laborum veniam, est disrupt umami wayfarers try-hard before they sold out fap. Culpa bitters kitsch adipisicing, nesciunt brunch squid minim post-ironic assumenda irony. Qui bespoke organic, photo booth authentic PBR velit before they sold out fingerstache nostrud flannel. Leggings chillwave est sustainable, tofu raw denim sint 8-bit keffiyeh High Life. Nostrud Austin put a bird on it, typewriter Godard gastropub ennui mlkshk deserunt assumenda. Blog letterpress meggings, nihil Shoreditch Etsy try-hard vinyl Echo Park cray farm-to-table McSweeney's High Life. Qui stumptown ex Cosby sweater street art ethnic irure dolore.
+  </p>
+
+  <p>
+    In post-ironic umami, sint +1 gluten-free pickled disrupt vinyl jean shorts velit placeat est American Apparel. Flannel cupidatat deserunt master cleanse cornhole vinyl, Banksy 8-bit fugiat pariatur. Schlitz Intelligentsia incididunt ugh, literally minim skateboard ennui. Labore deep v placeat, mlkshk biodiesel church-key post-ironic Cosby sweater twee nesciunt Blue Bottle. Salvia vero esse, exercitation cliche chambray aliquip gluten-free yr post-ironic pug narwhal kale chips ennui hella. Consequat bitters salvia delectus esse. Fap kogi forage culpa Tumblr, accusamus PBR Thundercats PBR&B banjo ullamco 8-bit bitters minim you probably haven't heard of them.
+  </p>
+
+  <p>
+    Sed nulla cred Banksy jean shorts. Reprehenderit mumblecore incididunt anim accusamus. Keffiyeh Cosby sweater in cornhole elit, tote bag cillum banjo. Shabby chic YOLO banh mi sunt. Artisan blog Neutra, polaroid adipisicing Banksy +1 lo-fi umami distillery fixie seitan. Semiotics artisan flannel mollit craft beer Blue Bottle. Bespoke biodiesel banh mi literally.
+  </p>
+
+  <p>
+    YOLO Marfa drinking vinegar polaroid laborum veniam, est disrupt umami wayfarers try-hard before they sold out fap. Culpa bitters kitsch adipisicing, nesciunt brunch squid minim post-ironic assumenda irony. Qui bespoke organic, photo booth authentic PBR velit before they sold out fingerstache nostrud flannel. Leggings chillwave est sustainable, tofu raw denim sint 8-bit keffiyeh High Life. Nostrud Austin put a bird on it, typewriter Godard gastropub ennui mlkshk deserunt assumenda. Blog letterpress meggings, nihil Shoreditch Etsy try-hard vinyl Echo Park cray farm-to-table McSweeney's High Life. Qui stumptown ex Cosby sweater street art ethnic irure dolore.
+  </p>
+
+  <p>
+    In post-ironic umami, sint +1 gluten-free pickled disrupt vinyl jean shorts velit placeat est American Apparel. Flannel cupidatat deserunt master cleanse cornhole vinyl, Banksy 8-bit fugiat pariatur. Schlitz Intelligentsia incididunt ugh, literally minim skateboard ennui. Labore deep v placeat, mlkshk biodiesel church-key post-ironic Cosby sweater twee nesciunt Blue Bottle. Salvia vero esse, exercitation cliche chambray aliquip gluten-free yr post-ironic pug narwhal kale chips ennui hella. Consequat bitters salvia delectus esse. Fap kogi forage culpa Tumblr, accusamus PBR Thundercats PBR&B banjo ullamco 8-bit bitters minim you probably haven't heard of them.
+  </p>
+  <p>
+    YOLO Marfa drinking vinegar polaroid laborum veniam, est disrupt umami wayfarers try-hard before they sold out fap. Culpa bitters kitsch adipisicing, nesciunt brunch squid minim post-ironic assumenda irony. Qui bespoke organic, photo booth authentic PBR velit before they sold out fingerstache nostrud flannel. Leggings chillwave est sustainable, tofu raw denim sint 8-bit keffiyeh High Life. Nostrud Austin put a bird on it, typewriter Godard gastropub ennui mlkshk deserunt assumenda. Blog letterpress meggings, nihil Shoreditch Etsy try-hard vinyl Echo Park cray farm-to-table McSweeney's High Life. Qui stumptown ex Cosby sweater street art ethnic irure dolore.
+  </p>
+
+  <p>
+    In post-ironic umami, sint +1 gluten-free pickled disrupt vinyl jean shorts velit placeat est American Apparel. Flannel cupidatat deserunt master cleanse cornhole vinyl, Banksy 8-bit fugiat pariatur. Schlitz Intelligentsia incididunt ugh, literally minim skateboard ennui. Labore deep v placeat, mlkshk biodiesel church-key post-ironic Cosby sweater twee nesciunt Blue Bottle. Salvia vero esse, exercitation cliche chambray aliquip gluten-free yr post-ironic pug narwhal kale chips ennui hella. Consequat bitters salvia delectus esse. Fap kogi forage culpa Tumblr, accusamus PBR Thundercats PBR&B banjo ullamco 8-bit bitters minim you probably haven't heard of them.
+  </p>
+</section>
+<center>
+
+  <div id="mySidenav" class="sidenav">
+    <button  class="closebtn" onclick="closeNav()">&times;</button>
+    <ul>
+      <li><a href="#" rel="css/colors/blue.css">
+        <span style="background: blue"></span>
+      </a></li>
+      <li><a href="#" rel="css/colors/green.css">
+        <span style="background: green"></span>
+      </a></li>
+      <li><a href="#" rel="css/colors/orange.css">
+        <span style="background: orange"></span>
+      </a></li>
+    </ul>
+
+  </div>
+
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+  <button onclick="selectCss(this)" id="blue-btn" class="accent-color-bg btn-style">Blue</button>
+  <button onclick="selectCss(this)" id="green-btn" class="accent-color-bg btn-style">Green</button>
+  <button onclick="selectCss(this)" id="orange-btn" class="accent-color-bg btn-style">Orange</button>
+  <p class="accent-color">Lorem Ipsum is simply dummy text
+    of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy
+    text ever since the 1500s, when an unknown printer
+    took a galley of type and scrambled it to make a type
+    specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining
+    essentially unchanged. It was popularised in the 1960s with
+    the release of Letraset sheets containing Lorem Ipsum passages,
+    and more recently with desktop publishing software like Aldus
+    PageMaker including versions of Lorem Ipsum.</p>
+
+</center>
+<script>
+  function selectCss() {
+    var link = $("link[rel=stylesheet]")[0].href;
+    var css = link.substring(link.lastIndexOf('/') + 1, link.length)
+    $('link[href="' + css + '"]').attr('href', $('#changeCss').val() + '.css');
+  }
+</script>
+<script>
+  $('a').click(function () {
+    $.stylesheets.clear().add($(this).attr('rel'));
+    return false;
+  });
+
+</script>
+<script>
+  $.stylesheets = (function () {
+    var stylesheets,
+        add,
+        clear;
+
+    add = function (cssfile) {
+      $('head').append('<link href="' + cssfile + '" rel="stylesheet" />');
+      return stylesheets;
+    };
+
+    clear = function () {
+      $('head link[rel=stylesheet]').remove();
+      return stylesheets;
+    };
+
+    return stylesheets = {
+      add: add,
+      clear: clear
+    };
+  } ());
+</script>
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
+<!--<script>
+  $(document).on("scroll", function(){
+    if
+    ($(document).scrollTop() > 100){
+      $("header").addClass("shrink");
+    }
+    else
+    {
+      $("header").removeClass("shrink");
+    }
+  });
+</script>-->
+<script>
+  $(document).on("scroll", function(){
+    if (
+        $(document).scrollTop() > 100){
+        $("header").addClass("shrink");
+    }
+    else{
+      $("header").removeClass("shrink");
+    }
+  });
+</script>
+</body>
+</html>
